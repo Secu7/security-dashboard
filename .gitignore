@@ -1,0 +1,26 @@
+# Node / Next / v0.app 일반 패턴
+node_modules/
+.next/
+out/
+dist/
+build/
+.vercel/
+.vscode/
+.env
+.env.*
+*.local
+
+# 로그/커버리지
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+coverage/
+
+# OS 잡파일
+.DS_Store
+Thumbs.db
+
+# 압축파일
+*.zip

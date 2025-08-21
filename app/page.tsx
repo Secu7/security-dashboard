@@ -558,7 +558,14 @@ const renderContent = (section: string) => {
                 <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={threatCategoriesData}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
+                    <XAxis
+                      dataKey="name"
+                      angle={-45}
+                      textAnchor="end"
+                      height={80}
+                      interval={0}
+                      tick={{ fontSize: 12 }}
+                    />
                     <YAxis />
                     <Tooltip
                       content={({ active, payload, label }) => {

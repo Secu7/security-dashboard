@@ -41,11 +41,11 @@ const threatSeverityData = [
 ]
 
 const threatCategoriesData = [
-  { name: "Phishing", count: 34 },
-  { name: "Malware", count: 28 },
-  { name: "Insider Threat", count: 15 },
-  { name: "Account Takeover", count: 12 },
-  { name: "Ransomware", count: 8 },
+  { name: "Phishing", count: 34, description: "Email-based social engineering attacks targeting credentials" },
+  { name: "Malware", count: 28, description: "Malicious software including viruses, trojans, and spyware" },
+  { name: "Ransomware", count: 15, description: "Encryption-based attacks demanding payment for data recovery" },
+  { name: "Insider Threat", count: 12, description: "Security risks from authorized users with malicious intent" },
+  { name: "Account Takeover", count: 8, description: "Unauthorized access to legitimate user accounts" },
 ]
 
 const attackVectorsData = [
@@ -560,7 +560,21 @@ const renderContent = (section: string) => {
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="name" />
                     <YAxis />
-                    <Tooltip />
+                    <Tooltip
+                      content={({ active, payload, label }) => {
+                        if (active && payload && payload.length) {
+                          const data = threatCategoriesData.find((item) => item.name === label)
+                          return (
+                            <div className="bg-popover border border-border rounded-lg p-3 shadow-lg">
+                              <p className="font-semibold">{label}</p>
+                              <p className="text-primary">Count: {payload[0].value}</p>
+                              {data && <p className="text-xs text-muted-foreground mt-1">{data.description}</p>}
+                            </div>
+                          )
+                        }
+                        return null
+                      }}
+                    />
                     <Bar dataKey="count" fill="hsl(var(--primary))" />
                   </BarChart>
                 </ResponsiveContainer>
@@ -575,12 +589,12 @@ const renderContent = (section: string) => {
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={200}>
-                  <BarChart data={attackVectorsData} layout="horizontal">
+                  <BarChart data={attackVectorsData} layout="vertical">
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis type="number" />
                     <YAxis dataKey="name" type="category" width={80} />
                     <Tooltip />
-                    <Bar dataKey="count" fill="hsl(var(--accent))" />
+                    <Bar dataKey="count" fill="hsl(var(--chart-2))" />
                   </BarChart>
                 </ResponsiveContainer>
               </CardContent>

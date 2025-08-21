@@ -1,2 +1,4 @@
 * text=auto
+README.md merge=ours
+.gitignore merge=union
 

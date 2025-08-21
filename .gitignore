@@ -9,18 +9,26 @@ build/
 .env
 .env.*
 *.local
+<<<<<<< HEAD
 
 # 로그/커버리지
+=======
+>>>>>>> 13ba0b0 (chore: initial import from v0.app)
 logs/
 *.log
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
 coverage/
+<<<<<<< HEAD
 
 # OS 잡파일
 .DS_Store
 Thumbs.db
 
 # 압축파일
+=======
+.DS_Store
+Thumbs.db
+>>>>>>> 13ba0b0 (chore: initial import from v0.app)
 *.zip
